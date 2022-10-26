@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import InputForm from "./Components/InputForm/InputForm";
+import { useState } from "react";
+import DisplayUsers from "./Components/DisplayUser/DisplayUsers";
+import Modal from "./Components/Modal/Modal";
+import "./App.css";
 
 function App() {
+  const [storedUsers, setStoredUsers] = useState([]);
+  const [isValid, setIsValid] = useState(true);
+  const [validationMessage, setValidationMessage] = useState("true");
+
+  function addNewUser(newUser) {
+    setStoredUsers((prev) => [newUser, ...prev]);
+  }
+
+  function validation(validInput, message) {
+    setIsValid(validInput);
+    if (message !== "") {
+      setValidationMessage(message);
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <InputForm validation={validation} addNewUser={addNewUser} />
+      <DisplayUsers allUsers={storedUsers} />
+      <Modal
+        validationMessage={validationMessage}
+        isValid={isValid}
+        validationChange={validation}
+      />
     </div>
   );
 }

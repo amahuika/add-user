@@ -1,0 +1,8 @@
+.name-wrapper.invalid label {
+  color: red;
+}
+
+.name-wrapper.invalid input {
+  background-color: rgb(218, 129, 129);
+  border: red solid;
+}
