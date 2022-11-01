@@ -23,11 +23,15 @@ function App() {
     <div className="container">
       <InputForm validation={validation} addNewUser={addNewUser} />
       <DisplayUsers allUsers={storedUsers} />
-      <Modal
-        validationMessage={validationMessage}
-        isValid={isValid}
-        validationChange={validation}
-      />
+      {!isValid ? (
+        <Modal
+          validationMessage={validationMessage}
+          isValid={isValid}
+          validationChange={validation}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -40,7 +40,7 @@ function InputForm(props) {
     <div className="row justify-content-center mt-4">
       <div className="col-sm-8 col-md-6">
         <Card>
-          <form>
+          <form onSubmit={onSubmitHandler}>
             <div className="form-wrapper">
               <div className={`mb-2 `}>
                 <label className={`form-label`}>Username</label>
@@ -61,11 +61,7 @@ function InputForm(props) {
                 />
               </div>
             </div>
-            <button
-              type="submit"
-              onClick={onSubmitHandler}
-              className="btn btn-primary btn-sm"
-            >
+            <button type="submit" className="btn btn-primary btn-sm">
               Add User
             </button>
           </form>
